@@ -1,4 +1,4 @@
-# hdshell
+# hdshell [![Build Status](https://travis-ci.org/saagarjha/hdshell.svg?branch=master)](https://travis-ci.org/saagarjha/hdshell)
 
 ## What is hdshell?
 hdshell is a command line script that makes it easy to manage your Hadoop distributed file system (HDFS). Tired of typing something like this?
