@@ -62,10 +62,13 @@ if let firstArgument = Process.arguments.dropFirst().first {
 	case "-d":
 		fallthrough
 	case "--set-home-directory":
-		if Process.arguments.count == 2 {
-			UserDefaults.standard.set(Process.arguments[1], forKey: "homeDirectory")
+		if Process.arguments.count == 3 {
+			UserDefaults.standard.set(Process.arguments[2], forKey: "homeDirectory")
 		} else {
-			
+			print("hdshell usage:")
+			print("-h, --help: print this help message")
+			print("-d, --set-home-directory [hdfs filepath]: set the home directory")
+			exit(EXIT_FAILURE)
 		}
 		exit(EXIT_SUCCESS)
 	default:
