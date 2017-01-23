@@ -9,7 +9,7 @@
 import Foundation
 
 func evaluate(shellCommand command: String) -> String? {
-	let task = Task()
+	let task = Process()
 	task.launchPath = "/bin/bash"
 	task.arguments = ["-c", command]
 	let pipe = Pipe()
@@ -50,7 +50,7 @@ func clean(path hdfsPath: String) -> String {
 	return cleanPath.joined(separator: "/")
 }
 
-if let firstArgument = Process.arguments.dropFirst().first {
+if let firstArgument = CommandLine.arguments.dropFirst().first {
 	switch firstArgument {
 	case "-h":
 		fallthrough
@@ -62,8 +62,8 @@ if let firstArgument = Process.arguments.dropFirst().first {
 	case "-d":
 		fallthrough
 	case "--set-home-directory":
-		if Process.arguments.count == 3 {
-			UserDefaults.standard.set(Process.arguments[2], forKey: "homeDirectory")
+		if CommandLine.arguments.count == 3 {
+			UserDefaults.standard.set(CommandLine.arguments[2], forKey: "homeDirectory")
 		} else {
 			print("hdshell usage:")
 			print("-h, --help: print this help message")
